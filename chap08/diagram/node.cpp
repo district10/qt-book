@@ -1,4 +1,5 @@
 #include <QtGui>
+#include <QDebug>
 
 #include "link.h"
 #include "node.h"
@@ -126,6 +127,16 @@ QVariant Node::itemChange(GraphicsItemChange change,
             link->trackNodes();
     }
     return QGraphicsItem::itemChange(change, value);
+}
+
+void Node::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
+{
+    this->setCursor( Qt::OpenHandCursor );
+}
+
+void Node::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
+{
+    this->setCursor( Qt::PointingHandCursor );
 }
 
 QRectF Node::outlineRect() const
